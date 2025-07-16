@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ntt-data-test": {
+    "test-product": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ntt-data-test",
+            "outputPath": "dist/test-product",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ntt-data-test:build:production"
+              "browserTarget": "test-product:build:production"
             },
             "development": {
-              "browserTarget": "ntt-data-test:build:development"
+              "browserTarget": "test-product:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ntt-data-test:build"
+            "browserTarget": "test-product:build"
           }
         },
         "test": {
