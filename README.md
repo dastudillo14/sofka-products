@@ -1,5 +1,21 @@
 # Test
 
+## 📄 Descripción del Proyecto (Español)
+
+Este proyecto es una aplicación Angular creada para gestionar productos, demostrando buenas prácticas de desarrollo frontend. El código está estructurado en módulos, componentes y servicios para facilitar la escalabilidad y el mantenimiento.
+
+### Uso de los principios SOLID
+
+Durante el desarrollo de este proyecto se han aplicado los principios SOLID para mejorar la calidad del código:
+
+- **S (Single Responsibility Principle / Principio de Responsabilidad Única):** Cada componente, servicio y módulo tiene una única responsabilidad clara, facilitando su comprensión y mantenimiento.
+- **O (Open/Closed Principle / Principio de Abierto/Cerrado):** El código está diseñado para ser extensible sin modificar la funcionalidad existente, permitiendo agregar nuevas características de forma segura.
+- **L (Liskov Substitution Principle / Principio de Sustitución de Liskov):** Las interfaces y clases pueden ser extendidas o implementadas sin alterar el comportamiento esperado del sistema.
+- **I (Interface Segregation Principle / Principio de Segregación de Interfaces):** Se utilizan interfaces específicas para cada contexto, evitando dependencias innecesarias y promoviendo la reutilización.
+- **D (Dependency Inversion Principle / Principio de Inversión de Dependencias):** Los módulos de alto nivel no dependen de módulos de bajo nivel, sino de abstracciones, facilitando la inyección de dependencias y el testeo.
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
 
 ## Development server
