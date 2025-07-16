@@ -1,7 +1,6 @@
-# Test
+# Products - Test
 
-## 📄 Descripción del Proyecto (Español)
-
+## 📄 Descripción del Proyecto
 Este proyecto es una aplicación Angular creada para gestionar productos, demostrando buenas prácticas de desarrollo frontend. El código está estructurado en módulos, componentes y servicios para facilitar la escalabilidad y el mantenimiento.
 
 ### Uso de los principios SOLID
