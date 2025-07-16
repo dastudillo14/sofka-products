@@ -1,0 +1,137 @@
+<div class="centered">
+  <div class="table-container">
+    <div class="form-group button-container search-container">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar producto"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange($event)"
+        style="width: 200px"
+      />
+
+      <button class="btn btn-primary" (click)="goToAddProduct()">
+        Añadir Producto
+      </button>
+    </div>
+
+    <!-- Vista de tabla para pantallas medianas y grandes -->
+    <div class="table-view-desktop" *ngIf="!loading">
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>Logo</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Fecha de liberación</th>
+              <th>Fecha de revisión</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of displayedProducts">
+              <td>
+                <img
+                  src="assets/demo.svg"
+                  [alt]="product.name"
+                  class="product-logo circle-image"
+                />
+              </td>
+              <td>{{ product.name }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.date_release | date : "dd/MM/yyyy" }}</td>
+              <td>{{ product.date_revision | date : "dd/MM/yyyy" }}</td>
+              <td>
+                <select
+                  class="form-select"
+                  [(ngModel)]="optionSelected"
+                  (change)="productAction(product)"
+                >
+                  <option value="" disabled>Acciones</option>
+                  <option *ngFor="let option of productOptions" [value]="option.id">
+                    {{ option.label }}
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr *ngIf="displayedProducts.length === 0">
+              <td colspan="6" class="text-start">No hay datos para mostrar</td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <!-- Selector de pageSize posicionado a la derecha -->
+        <div class="page-size-selector">
+          <select
+            class="form-select page-size-select"
+            id="pageSize"
+            [(ngModel)]="pageSize"
+            (change)="updateDisplayedProducts()"
+          >
+            <option *ngFor="let size of pageSizes" [value]="size">
+              {{ size }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vista de tarjetas para móviles -->
+    <div class="cards-view-mobile" *ngIf="!loading">
+      <div class="product-card" *ngFor="let product of displayedProducts">
+        <div class="card-header">
+          <img
+            src="assets/demo.svg"
+            [alt]="product.name"
+            class="product-logo"
+          />
+          <div class="product-info">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="info-row">
+            <span class="label">Liberación:</span>
+            <span class="value">{{ product.date_release | date : "dd/MM/yyyy" }}</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Revisión:</span>
+            <span class="value">{{ product.date_revision | date : "dd/MM/yyyy" }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <select
+            class="form-select"
+            [(ngModel)]="optionSelected"
+            (change)="productAction(product)"
+          >
+            <option value="" disabled>Acciones</option>
+            <option *ngFor="let option of productOptions" [value]="option.id">
+              {{ option.label }}
+            </option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="no-data-mobile" *ngIf="displayedProducts.length === 0">
+        <div class="no-data-content">
+          <i class="no-data-icon">📋</i>
+          <p>No hay datos para mostrar</p>
+        </div>
+      </div>
+    </div>
+
+
+    <app-skeleton *ngIf="loading" ></app-skeleton>
+  </div>
+</div>
+
+<app-modal
+  *ngIf="showModalRemove"
+  (closed)="closeModalRemove($event)"
+  [title]="
+    '¿Está seguro de eliminar el producto ' + this.productToRemove?.name + '?'
+  "
+></app-modal>

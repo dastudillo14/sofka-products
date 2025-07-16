@@ -1,0 +1,18 @@
+<div class="modal-overlay" (click)="close(false)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>{{ title }}</h2>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        *ngIf="showBtnCancel"
+        class="btn btn-secondary"
+        (click)="close(false)"
+      >
+        Cancelar
+      </button>
+      <button class="btn btn-primary" (click)="close(true)">Aceptar</button>
+    </div>
+  </div>
+</div>
